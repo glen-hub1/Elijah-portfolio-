@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elijah Tech Portfolio</title>
+
+  <!-- CSS & Manifest -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="https://files.catbox.moe/mmchn4.jpg" type="image/png" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- iOS App Setup -->
+  <link rel="apple-touch-icon" href="https://files.catbox.moe/mmchn4.jpg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Elijah Tech" />
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <script>
+    let deferredPrompt;
+
+    // Handle install prompt
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      document.getElementById("installBtn").style.display = "block";
+    });
+
+    function installApp() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === "accepted") {
+            console.log("App installed!");
+          } else {
+            console.log("App dismissed!");
+          }
+          deferredPrompt = null;
+          document.getElementById("installBtn").style.display = "none";
+        });
+      }
+    }
+
+    // Register service worker
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js")
+          .then(() => console.log("✅ Service Worker Registered"))
+          .catch((err) => console.log("❌ Service Worker Failed:", err));
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <!-- Background animation -->
+  <div class="container">
+    <div class="circle" style="--i:0;"></div>
+    <div class="circle" style="--i:1;"></div>
+    <div class="circle" style="--i:2;"></div>
+    <div class="circle" style="--i:3;"></div>
+    <div class="circle" style="--i:4;"></div>
+    <div class="circle" style="--i:5;"></div>
+    <div class="circle" style="--i:6;"></div>
+    <div class="circle" style="--i:7;"></div>
+    <div class="circle" style="--i:8;"></div>
+    <div class="circle" style="--i:9;"></div>
+  </div>
+
+  <!-- Background music -->
+  <audio autoplay loop>
+    <source src="https://files.catbox.moe/02r11u.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Portfolio content -->
+  <section class="profile">
+    <img src="https://files.catbox.moe/mmchn4.jpg" alt="Elijah Tech" class="profile-img" />
+    <h1>Elijah Tech</h1>
+    <p class="location">🇬🇭 Ghana | Website Developer</p>
+    <p class="summary">
+      Highly motivated and detail-oriented web developer specializing in responsive, user-friendly, and scalable web applications. 
+      I sell foreign numbers (UK, Canada, Australia & Philippines), boost social media accounts, and sell data bundles for Ghanaians.
+    </p>
+
+    <div class="skills">
+      <h2>Technical Skills</h2>
+      <ul>
+        <li>Front-end: HTML5, CSS3, JavaScript, React, Angular</li>
+        <li>Back-end: Node.js, Python, Ruby on Rails</li>
+        <li>Databases: MySQL, MongoDB</li>
+        <li>Version Control: Git, GitHub</li>
+        <li>Responsive Web Design</li>
+      </ul>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <a href="https://techgh.eu.org/Elijah00" class="btn blue">💻 BUY DATA BUNDLES HERE</a>
+      <a href="https://wa.me/233545801305" class="btn green"><i class="fab fa-whatsapp"></i> Message me on WhatsApp</a>
+      <a href="tel:+233545801305" class="btn green"><i class="fas fa-phone"></i> Call Me</a>
+      <a href="https://www.tiktok.com/@elijah_global_services?_r=1&_t=ZM-91ECiyLaAYa" class="btn pink"><i class="fab fa-tiktok"></i> TikTok</a>
+
+      <!-- CV Button -->
+      <a href="https://files.catbox.moe/yourcv.pdf" download class="btn yellow">
+        <i class="fas fa-file-download"></i> Download My CV
+      </a>
+    </div>
+
+    <!-- Install App -->
+    <button id="installBtn" onclick="installApp()" class="btn install">⬇️ Download This App</button>
+  </section>
+</body>
+</html>

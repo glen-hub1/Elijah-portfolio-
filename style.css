@@ -1,0 +1,101 @@
+/* Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Circles animation */
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.circle {
+  position: absolute;
+  bottom: -150px;
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: moveUp 20s linear infinite;
+}
+
+@keyframes moveUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-100vh) scale(0.3); opacity: 0; }
+}
+
+/* Profile section */
+.profile {
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #00ffff;
+  margin-top: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  margin-top: 10px;
+}
+
+.location {
+  color: #00ffff;
+}
+
+.summary {
+  font-size: 0.9em;
+  color: #ddd;
+  margin: 10px 0 30px;
+}
+
+.skills h2 {
+  color: #00ffff;
+  margin-bottom: 10px;
+}
+
+.skills ul {
+  list-style: none;
+  padding: 0;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+.btn {
+  display: block;
+  margin: 10px auto;
+  padding: 12px 18px;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: 0.3s;
+  font-weight: bold;
+  width: 80%;
+  max-width: 300px;
+}
+
+.btn.blue { background: #007bff; color: white; }
+.btn.green { background: #25d366; color: white; }
+.btn.pink { background: #ff0050; color: white; }
+.btn.yellow { background: #ffc107; color: black; }
+.btn.install { background: #00ffff; color: black; }
+
+.btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
